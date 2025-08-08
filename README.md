@@ -29,7 +29,7 @@ git commit -m "add my feature" (make sure it fits CI check's requirements i.e al
 
 ## Step 4: Push to GitHub (First Time)
 ```bash
-git push -u origin feat/my-new-feature —force-with-lease
+git push -u origin feat/my-new-feature —-force-with-lease
 ```
 
 ---
