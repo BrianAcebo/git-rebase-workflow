@@ -22,7 +22,7 @@ git checkout -b feat/my-new-feature
 ## Step 3: Work on Your Feature
 ```bash
 git add .
-git commit -m “add my feature" (make sure it fits CI check's requirements i.e all lowercase, capitalize, etc.)
+git commit -m "add my feature" (make sure it fits CI check's requirements i.e all lowercase, capitalize, etc.)
 ```
 > Even if not done with work, it's good CI/CD principles to push code at the end of the day regardless of its state.
 > You can say it in your commit message as work in progress: `wip: updating auth handling`
