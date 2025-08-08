@@ -1,2 +1,76 @@
-# git-rebase-workflow
-Workflow for rebase based git
+# 🧑‍💻 Git Feature Branch Workflow (Rebase-First, Team-Safe)
+
+## Step 1: Always Start Fresh From Working Branch (I.e. staging, dev)
+```bash
+git checkout dev
+git pull origin dev --rebase
+```
+
+## Step 2: Create a New Feature Branch
+```bash
+git checkout -b feature/my-new-feature
+```
+
+## Step 3: Work on Your Feature
+```bash
+git add .
+git commit -m “add my feature" (make sure its lowercase)
+```
+
+## Step 4: Push to GitHub (First Time)
+```bash
+git push -u origin feature/my-new-feature —force-with-lease
+```
+
+---
+
+## Step 5: Pull Coworker's Changes into Your Feature Branch (If Necessary, BUT Make Sure You Do)
+
+### If You **Already Made Commits**:
+```bash
+git fetch origin
+git rebase origin/feature/my-new-feature
+git push --force-with-lease
+```
+
+### If You **Haven't Made Changes Or Committed Yet**:
+```bash
+git pull origin feature/my-new-feature
+```
+> ✅ This will fast-forward your branch cleanly without merge commits.
+
+---
+
+## Step 6: Sync with Latest Working Branch (Every Morning Or When Working Branch Updates)
+
+### If You **Already Made Commits**:
+```bash
+git fetch origin
+git rebase origin/dev
+git push --force-with-lease
+```
+
+### If You **Made Changes Or Committed Yet**:
+```bash
+git pull origin dev --rebase
+```
+> ✅ This updates your branch cleanly before pushing to PR.
+
+---
+
+## Step 7: Push Rebasing Changes to GitHub
+```bash
+git push --force-with-lease
+```
+> ⚠️ Always use `--force-with-lease` after a rebase since rebasing rewrites history.
+
+---
+
+# 🚀 Key Rules Summary
+- ✅ Always **rebase onto origin/dev** before making a PR.
+- ❌ Never **merge dev into your feature branch** since git merge origin/dev will make a copy of dev’s commit history and pollute it.
+- ✅ Always **use --force-with-lease** after rebasing.
+- ✅ When collaborating on the same branch:
+  - Pull before committing for a clean fast-forward.
+  - Rebase + force-push if you and your coworker have diverging commits. (Please communicate first, this will overwrite any commits that do not exist in your local history.)
+  - Force pushing is technically only needed after rebasing but still good practice to —force-with-lease every push
