@@ -8,18 +8,28 @@ git pull origin dev --rebase
 
 ## Step 2: Create a New Feature Branch
 ```bash
-git checkout -b feature/my-new-feature
+git checkout -b feat/my-new-feature
 ```
+
+| Branch   | Purpose                  |
+|----------|--------------------------|
+| main or prod    | Production-ready code     |
+| staging or dev  | Pre-release QA branch     |
+| feat/*          | New features              |
+| fix/*           | Bug fixes                 |
+| chore/*         | Setup or config work      |
 
 ## Step 3: Work on Your Feature
 ```bash
 git add .
-git commit -m “add my feature" (make sure its lowercase)
+git commit -m “add my feature" (make sure it fits CI check's requirements i.e all lowercase, capitalize, etc.)
 ```
+> Even if not done with work, it's good CI/CD principles to push code at the end of the day regardless of its state.
+> You can say it in your commit message as work in progress: `wip: updating auth handling`
 
 ## Step 4: Push to GitHub (First Time)
 ```bash
-git push -u origin feature/my-new-feature —force-with-lease
+git push -u origin feat/my-new-feature —force-with-lease
 ```
 
 ---
@@ -29,13 +39,13 @@ git push -u origin feature/my-new-feature —force-with-lease
 ### If You **Already Made Commits**:
 ```bash
 git fetch origin
-git rebase origin/feature/my-new-feature
+git rebase origin/feat/my-new-feature
 git push --force-with-lease
 ```
 
 ### If You **Haven't Made Changes Or Committed Yet**:
 ```bash
-git pull origin feature/my-new-feature
+git pull origin feat/my-new-feature
 ```
 > ✅ This will fast-forward your branch cleanly without merge commits.
 
