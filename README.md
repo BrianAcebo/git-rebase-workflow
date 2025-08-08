@@ -77,10 +77,10 @@ git push --force-with-lease
 ---
 
 # 🚀 Key Rules Summary
-- ✅ Always **rebase onto origin/dev** before making a PR.
-- ❌ Never **merge dev into your feature branch** since git merge origin/dev will make a copy of dev’s commit history and pollute it.
-- ✅ Always **use --force-with-lease** after rebasing.
+- ✅ Always rebase onto origin/dev before making a PR.
+- ❌ Never git merge into your feature branch since git merge will make a copy of the other branch’s commit history and pollute it.
+- ✅ Always use --force-with-lease after rebasing to overwrite the divergent history.
 - ✅ When collaborating on the same branch:
-  - Pull before committing for a clean fast-forward.
+  - Always pull before committing for a clean fast-forward.
   - Rebase + force-push if you and your coworker have diverging commits. (Please communicate first, this will overwrite any commits that do not exist in your local history.)
-  - Force pushing is technically only needed after rebasing but still good practice to —force-with-lease every push
+  - Force pushing is technically only needed after rebasing but still good practice to —-force-with-lease every push
